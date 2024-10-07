@@ -97,32 +97,45 @@ namespace PrsEfWebApi.Controllers
             {
                 return NotFound("No requests found");
             }
+
             return Ok(requests);
         }
 
         [HttpPut("submit-review/{id}")]
-        public async Task<ActionResult<IEnumerable<Request>>> SubmitReview(int id)
+        public async Task<ActionResult<IEnumerable<Request>>> SubmitReview(int id, Request request)
         {
             //this will be the put action for submitting a request for review
             //ok, so this method just tells the program that a request is ready for review
             //because of that, how can I define a default status value of review
             //the input listed is id:int not user id like the get
             //same input is needed for the approve and reject functions
-            var request = await _context.Requests.FindAsync(id);
-            if (request == null)
+            //var request = await _context.Requests.FindAsync(id);
+            var checkrequest = await _context.Requests
+                .Include(r => r.LineItems)
+                .ThenInclude(li => li.Product)
+                .FirstOrDefaultAsync(r => r.Id == id);
+            if (checkrequest == null)
             {
                 return NotFound();
             }
-            if (request.Total < 50.00m)
+            //update 
+            checkrequest.Status = request.Status;
+
+            //recalc
+            checkrequest.UpdateTotal();
+
+            //auto approve if lower than 50
+            if (checkrequest.Total < 50.00m)
             {
-                request.Status = "Approved"; //it works!
+                checkrequest.Status = "APPROVED"; //it works!
             }
             else
             {
                 //I don't think this is right, this might allow it to change an accepted or rejected one to review
 
-                request.Status = "Review";
+                checkrequest.Status = "REVIEW";
             }
+            _context.Entry(checkrequest).State = EntityState.Modified;
             await _context.SaveChangesAsync();
             return NoContent();
         }
@@ -142,7 +155,7 @@ namespace PrsEfWebApi.Controllers
             //var reviewer = await _context.Users
             //    .Where(r => r.userId == userId && r.Reviewer)
             //    .FirstOrDefaultAsync();
-            requests.Status = "Approved";
+            requests.Status = "APPROVED";
             await _context.SaveChangesAsync();
             return NoContent();
         }
@@ -161,7 +174,7 @@ namespace PrsEfWebApi.Controllers
             {
                 return NotFound();
             }
-            request.Status = "Rejected";
+            request.Status = "R";
             request.ReasonForRejection = rejectionReason; //the reason you reject, duh
             _context.Requests.Update(request);
             await _context.SaveChangesAsync();

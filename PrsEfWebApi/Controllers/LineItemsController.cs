@@ -54,23 +54,33 @@ namespace PrsEfWebApi.Controllers
                 return BadRequest("Invalid line item data.");
             }
 
-            _context.Entry(lineItem).State = EntityState.Modified;
+            //_context.Entry(lineItem).State = EntityState.Modified;
 
-            try
+            var checkLineItem = await _context.LineItems
+                .Include(li => li.Request)
+                .ThenInclude(r => r.LineItems)
+                .ThenInclude(li  => li.Product)
+                .FirstOrDefaultAsync(li => li.Id == id);
+            if (checkLineItem == null)
             {
-                await _context.SaveChangesAsync();
+                return NotFound();
             }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!LineItemExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            
+            //update properties
+           checkLineItem.Quantity = lineItem.Quantity;
+            checkLineItem.ProductId = lineItem.ProductId;
+
+            //save lineitem
+            _context.Entry(checkLineItem).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+
+            //recalc total
+            var request = checkLineItem.Request;
+            request.UpdateTotal(); 
+
+            //save changes to request
+            _context.Entry(request).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
 
             return NoContent();
         }
@@ -87,16 +97,27 @@ namespace PrsEfWebApi.Controllers
             }
             _context.LineItems.Add(lineItem);
             await _context.SaveChangesAsync();
-         
+            
+            //find the request(s)
+            var request = await _context.Requests
+                .Include(r => r.LineItems)
+                .ThenInclude(li => li.Product)
+                .FirstOrDefaultAsync(r => r.Id == lineItem.RequestId);
+            if (request == null)
+            {
+                return NotFound("The relevant request was not found");
+            }
+
+            //now we're trying to do the total
+            request.UpdateTotal();
+
+            //save request total changes
+            _context.Entry(request).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
+
 
             return CreatedAtAction("GetLineItem", new { id = lineItem.Id }, lineItem);
-            //if (lineItem == null || lineItem.ProductId <= 0 || lineItem.RequestId <= 0)
-            //{
-            //    return BadRequest("Invalid line item data.");
-            //}
-            //_context.LineItems.Add(lineItem);
-            //await _context.SaveChangesAsync();
-
+            
             ////return CreatedAtAction("GetLineItem", new { id = lineItem.Id }, lineItem);
             //return CreatedAtAction(nameof(GetLineItem), new {id = lineItem.Id}, lineItem);
         }

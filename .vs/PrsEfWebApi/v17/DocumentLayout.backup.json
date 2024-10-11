@@ -3,20 +3,8 @@
   "WorkspaceRootPath": "C:\\repos\\PrsEfWeb\\PrsEfWebApi\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{763F8E7E-3BFF-4A25-9419-8519073B226A}|PrsEfWebApi\\PrsEfWebApi.csproj|c:\\repos\\prsefweb\\prsefwebapi\\prsefwebapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{763F8E7E-3BFF-4A25-9419-8519073B226A}|PrsEfWebApi\\PrsEfWebApi.csproj|solutionrelative:prsefwebapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{763F8E7E-3BFF-4A25-9419-8519073B226A}|PrsEfWebApi\\PrsEfWebApi.csproj|c:\\repos\\prsefweb\\prsefwebapi\\prsefwebapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{763F8E7E-3BFF-4A25-9419-8519073B226A}|PrsEfWebApi\\PrsEfWebApi.csproj|solutionrelative:prsefwebapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{763F8E7E-3BFF-4A25-9419-8519073B226A}|PrsEfWebApi\\PrsEfWebApi.csproj|c:\\repos\\prsefweb\\prsefwebapi\\prsefwebapi\\controllers\\lineitemscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{763F8E7E-3BFF-4A25-9419-8519073B226A}|PrsEfWebApi\\PrsEfWebApi.csproj|solutionrelative:prsefwebapi\\controllers\\lineitemscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{763F8E7E-3BFF-4A25-9419-8519073B226A}|PrsEfWebApi\\PrsEfWebApi.csproj|c:\\repos\\prsefweb\\prsefwebapi\\prsefwebapi\\controllers\\requestscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{763F8E7E-3BFF-4A25-9419-8519073B226A}|PrsEfWebApi\\PrsEfWebApi.csproj|solutionrelative:prsefwebapi\\controllers\\requestscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{763F8E7E-3BFF-4A25-9419-8519073B226A}|PrsEfWebApi\\PrsEfWebApi.csproj|c:\\repos\\prsefweb\\prsefwebapi\\prsefwebapi\\models\\request.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -27,8 +15,12 @@
       "RelativeMoniker": "D:0:0:{763F8E7E-3BFF-4A25-9419-8519073B226A}|PrsEfWebApi\\PrsEfWebApi.csproj|solutionrelative:prsefwebapi\\models\\lineitem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{763F8E7E-3BFF-4A25-9419-8519073B226A}|PrsEfWebApi\\PrsEfWebApi.csproj|c:\\repos\\prsefweb\\prsefwebapi\\prsefwebapi\\migrations\\prsdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{763F8E7E-3BFF-4A25-9419-8519073B226A}|PrsEfWebApi\\PrsEfWebApi.csproj|solutionrelative:prsefwebapi\\migrations\\prsdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{763F8E7E-3BFF-4A25-9419-8519073B226A}|PrsEfWebApi\\PrsEfWebApi.csproj|c:\\repos\\prsefweb\\prsefwebapi\\prsefwebapi\\controllers\\requestscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{763F8E7E-3BFF-4A25-9419-8519073B226A}|PrsEfWebApi\\PrsEfWebApi.csproj|solutionrelative:prsefwebapi\\controllers\\requestscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{763F8E7E-3BFF-4A25-9419-8519073B226A}|PrsEfWebApi\\PrsEfWebApi.csproj|c:\\repos\\prsefweb\\prsefwebapi\\prsefwebapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{763F8E7E-3BFF-4A25-9419-8519073B226A}|PrsEfWebApi\\PrsEfWebApi.csproj|solutionrelative:prsefwebapi\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|ViewDataWindow_MSSQL__/COOL_MACHINE_SQLEXPRESS/prsdb/True/SqlTable/dbo.Request.sql||{0058A1F7-65F3-4DB9-B3D0-CA7E64DD73CD}"
@@ -36,10 +28,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{763F8E7E-3BFF-4A25-9419-8519073B226A}|PrsEfWebApi\\PrsEfWebApi.csproj|c:\\repos\\prsefweb\\prsefwebapi\\prsefwebapi\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{763F8E7E-3BFF-4A25-9419-8519073B226A}|PrsEfWebApi\\PrsEfWebApi.csproj|solutionrelative:prsefwebapi\\models\\product.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{763F8E7E-3BFF-4A25-9419-8519073B226A}|PrsEfWebApi\\PrsEfWebApi.csproj|c:\\repos\\prsefweb\\prsefwebapi\\prsefwebapi\\migrations\\20241002024853_updaterequeststatusdefaultvalue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{763F8E7E-3BFF-4A25-9419-8519073B226A}|PrsEfWebApi\\PrsEfWebApi.csproj|solutionrelative:prsefwebapi\\migrations\\20241002024853_updaterequeststatusdefaultvalue.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -58,31 +46,56 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\repos\\PrsEfWeb\\PrsEfWebApi\\PrsEfWebApi\\appsettings.json",
-              "RelativeDocumentMoniker": "PrsEfWebApi\\appsettings.json",
-              "ToolTip": "C:\\repos\\PrsEfWeb\\PrsEfWebApi\\PrsEfWebApi\\appsettings.json",
-              "RelativeToolTip": "PrsEfWebApi\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABLAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-10-07T21:54:23.261Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
               "Title": "LineItemsController.cs",
               "DocumentMoniker": "C:\\repos\\PrsEfWeb\\PrsEfWebApi\\PrsEfWebApi\\Controllers\\LineItemsController.cs",
               "RelativeDocumentMoniker": "PrsEfWebApi\\Controllers\\LineItemsController.cs",
               "ToolTip": "C:\\repos\\PrsEfWeb\\PrsEfWebApi\\PrsEfWebApi\\Controllers\\LineItemsController.cs",
               "RelativeToolTip": "PrsEfWebApi\\Controllers\\LineItemsController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFIAAAAuAAAAAAAAAA==",
+              "ViewState": "AgIAAJkAAAAAAAAAAAAuwKQAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-06T23:46:12.977Z"
+              "WhenOpened": "2024-10-06T23:46:12.977Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
+              "Title": "Request.cs",
+              "DocumentMoniker": "C:\\repos\\PrsEfWeb\\PrsEfWebApi\\PrsEfWebApi\\Models\\Request.cs",
+              "RelativeDocumentMoniker": "PrsEfWebApi\\Models\\Request.cs",
+              "ToolTip": "C:\\repos\\PrsEfWeb\\PrsEfWebApi\\PrsEfWebApi\\Models\\Request.cs",
+              "RelativeToolTip": "PrsEfWebApi\\Models\\Request.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAAUwDkAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-30T02:40:48.551Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "RequestsController.cs",
+              "DocumentMoniker": "C:\\repos\\PrsEfWeb\\PrsEfWebApi\\PrsEfWebApi\\Controllers\\RequestsController.cs",
+              "RelativeDocumentMoniker": "PrsEfWebApi\\Controllers\\RequestsController.cs",
+              "ToolTip": "C:\\repos\\PrsEfWeb\\PrsEfWebApi\\PrsEfWebApi\\Controllers\\RequestsController.cs",
+              "RelativeToolTip": "PrsEfWebApi\\Controllers\\RequestsController.cs",
+              "ViewState": "AgIAALsAAAAAAAAAAADwv74AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-30T02:19:40.667Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\repos\\PrsEfWeb\\PrsEfWebApi\\PrsEfWebApi\\Program.cs",
+              "RelativeDocumentMoniker": "PrsEfWebApi\\Program.cs",
+              "ToolTip": "C:\\repos\\PrsEfWeb\\PrsEfWebApi\\PrsEfWebApi\\Program.cs",
+              "RelativeToolTip": "PrsEfWebApi\\Program.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAAABEAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-30T00:39:18.711Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "LineItem.cs",
               "DocumentMoniker": "C:\\repos\\PrsEfWeb\\PrsEfWebApi\\PrsEfWebApi\\Models\\LineItem.cs",
               "RelativeDocumentMoniker": "PrsEfWebApi\\Models\\LineItem.cs",
@@ -94,31 +107,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Request.cs",
-              "DocumentMoniker": "C:\\repos\\PrsEfWeb\\PrsEfWebApi\\PrsEfWebApi\\Models\\Request.cs",
-              "RelativeDocumentMoniker": "PrsEfWebApi\\Models\\Request.cs",
-              "ToolTip": "C:\\repos\\PrsEfWeb\\PrsEfWebApi\\PrsEfWebApi\\Models\\Request.cs",
-              "RelativeToolTip": "PrsEfWebApi\\Models\\Request.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAAA9wC0AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-30T02:40:48.551Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "RequestsController.cs",
-              "DocumentMoniker": "C:\\repos\\PrsEfWeb\\PrsEfWebApi\\PrsEfWebApi\\Controllers\\RequestsController.cs",
-              "RelativeDocumentMoniker": "PrsEfWebApi\\Controllers\\RequestsController.cs",
-              "ToolTip": "C:\\repos\\PrsEfWeb\\PrsEfWebApi\\PrsEfWebApi\\Controllers\\RequestsController.cs",
-              "RelativeToolTip": "PrsEfWebApi\\Controllers\\RequestsController.cs",
-              "ViewState": "AgIAAE8AAAAAAAAAAAAuwGMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-30T02:19:40.667Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 6,
               "Title": "Product.cs",
               "DocumentMoniker": "C:\\repos\\PrsEfWeb\\PrsEfWebApi\\PrsEfWebApi\\Models\\Product.cs",
               "RelativeDocumentMoniker": "PrsEfWebApi\\Models\\Product.cs",
@@ -130,48 +119,12 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 5,
               "Title": "dbo.Request.sql",
               "DocumentMoniker": "ViewDataWindow_MSSQL__/COOL_MACHINE_SQLEXPRESS/prsdb/True/SqlTable/dbo.Request.sql",
               "ToolTip": "ViewDataWindow_MSSQL__/COOL_MACHINE_SQLEXPRESS/prsdb/True/SqlTable/dbo.Request.sql",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
               "WhenOpened": "2024-10-06T05:12:17.823Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\repos\\PrsEfWeb\\PrsEfWebApi\\PrsEfWebApi\\Program.cs",
-              "RelativeDocumentMoniker": "PrsEfWebApi\\Program.cs",
-              "ToolTip": "C:\\repos\\PrsEfWeb\\PrsEfWebApi\\PrsEfWebApi\\Program.cs",
-              "RelativeToolTip": "PrsEfWebApi\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAmAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-30T00:39:18.711Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "20241002024853_UpdateRequestStatusDefaultValue.cs",
-              "DocumentMoniker": "C:\\repos\\PrsEfWeb\\PrsEfWebApi\\PrsEfWebApi\\Migrations\\20241002024853_UpdateRequestStatusDefaultValue.cs",
-              "RelativeDocumentMoniker": "PrsEfWebApi\\Migrations\\20241002024853_UpdateRequestStatusDefaultValue.cs",
-              "ToolTip": "C:\\repos\\PrsEfWeb\\PrsEfWebApi\\PrsEfWebApi\\Migrations\\20241002024853_UpdateRequestStatusDefaultValue.cs",
-              "RelativeToolTip": "PrsEfWebApi\\Migrations\\20241002024853_UpdateRequestStatusDefaultValue.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAAQwCsAAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-02T02:48:53.781Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "PrsdbContextModelSnapshot.cs",
-              "DocumentMoniker": "C:\\repos\\PrsEfWeb\\PrsEfWebApi\\PrsEfWebApi\\Migrations\\PrsdbContextModelSnapshot.cs",
-              "RelativeDocumentMoniker": "PrsEfWebApi\\Migrations\\PrsdbContextModelSnapshot.cs",
-              "ToolTip": "C:\\repos\\PrsEfWeb\\PrsEfWebApi\\PrsEfWebApi\\Migrations\\PrsdbContextModelSnapshot.cs",
-              "RelativeToolTip": "PrsEfWebApi\\Migrations\\PrsdbContextModelSnapshot.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAIgAAAAtAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-02T02:45:56.157Z"
             }
           ]
         }

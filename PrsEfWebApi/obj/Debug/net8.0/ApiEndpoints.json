@@ -360,7 +360,7 @@
   {
     "ContainingType": "PrsEfWebApi.Controllers.RequestsController",
     "Method": "ListReview",
-    "RelativePath": "api/Requests/list-reviews/{userid}",
+    "RelativePath": "api/Requests/list-review/{userid}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -405,11 +405,6 @@
       {
         "Name": "id",
         "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "request",
-        "Type": "PrsEfWebApi.Models.Request",
         "IsRequired": true
       }
     ],

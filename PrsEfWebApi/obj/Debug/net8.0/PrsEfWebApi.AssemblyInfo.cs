@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("PrsEfWebApi")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+dca335ad3f86af8060470fedadaa9083925a354c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e37cde414b332f68150452e6bb66129ffc0913f8")]
 [assembly: System.Reflection.AssemblyProductAttribute("PrsEfWebApi")]
 [assembly: System.Reflection.AssemblyTitleAttribute("PrsEfWebApi")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

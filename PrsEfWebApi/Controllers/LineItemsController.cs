@@ -126,16 +126,48 @@ namespace PrsEfWebApi.Controllers
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteLineItem(int id)
         {
-            var lineItem = await _context.LineItems.FindAsync(id);
+            //var lineItem = await _context.LineItems.FindAsync(id);
+            var lineItem = await _context.LineItems //I am not sure this makes sense now that I "think" about it
+                .Include(li => li.Request) //but my intent is to find the lineitem and associated request
+                .FirstOrDefaultAsync(li => li.Id == id);
             if (lineItem == null)
             {
                 return NotFound();
             }
+            //ok so we have to find the request the lineitem is part of. Not sure how I forgot to do that
 
+            //var request = await _context.Requests all this commented out code is going to look unprofessional, but I need the reference
+            //    .Include(r => r.LineItems)
+            //    .FirstOrDefaultAsync(r => r.Id == lineItem.RequestId);
+            //_context.LineItems.Remove(lineItem);
+
+            //reference request
+            var request = lineItem.Request;
+
+            //maybe I could subtract lineitem total from the actual total?
+            var product = await _context.Products.FindAsync(lineItem.ProductId);
+            if (product == null) 
+            {
+                return NotFound();
+            }
+
+            //lets try and calculate here
+            var totalSubtract = product.Price * lineItem.Quantity;
+
+            //update total, I'm seeing if doing it BEFORE removing works 
+            request.Total -= totalSubtract; //should I use update total or the literal variable total here? I'll try both
+
+            //delete lineitem
             _context.LineItems.Remove(lineItem);
-            await _context.SaveChangesAsync();
 
+            //update total
+            await _context.SaveChangesAsync(); // we are getting closer
+            //request.UpdateTotal();//however, it now updates to zero, but thats still closer than not updating
+
+            //save
+             await _context.SaveChangesAsync();          
             return NoContent();
+
         }
 
         private bool LineItemExists(int id)

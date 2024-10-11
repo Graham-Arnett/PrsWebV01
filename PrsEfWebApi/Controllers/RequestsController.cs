@@ -80,7 +80,7 @@ namespace PrsEfWebApi.Controllers
             return NoContent();
         }
 
-        [HttpGet("list-reviews/{userid}")]
+        [HttpGet("list-review/{userid}")]
         public async Task<IActionResult> ListReview(int userid)
         {
             //because this is a get command, we don't really edit the data here, we just search for it
@@ -102,7 +102,7 @@ namespace PrsEfWebApi.Controllers
         }
 
         [HttpPut("submit-review/{id}")]
-        public async Task<ActionResult<IEnumerable<Request>>> SubmitReview(int id, Request request)
+        public async Task<ActionResult<IEnumerable<Request>>> SubmitReview(int id)
         {
             //this will be the put action for submitting a request for review
             //ok, so this method just tells the program that a request is ready for review
@@ -119,7 +119,7 @@ namespace PrsEfWebApi.Controllers
                 return NotFound();
             }
             //update 
-            checkrequest.Status = request.Status;
+           // checkrequest.Status = request.Status;
 
             //recalc
             checkrequest.UpdateTotal();
@@ -174,7 +174,7 @@ namespace PrsEfWebApi.Controllers
             {
                 return NotFound();
             }
-            request.Status = "R";
+            request.Status = "REJECTED";
             request.ReasonForRejection = rejectionReason; //the reason you reject, duh
             _context.Requests.Update(request);
             await _context.SaveChangesAsync();
@@ -202,7 +202,7 @@ namespace PrsEfWebApi.Controllers
             {
                 return NotFound();
             }
-
+            request.UpdateTotal();
             _context.Requests.Remove(request);
             await _context.SaveChangesAsync();
 

@@ -44,11 +44,6 @@ public partial class Request
     [Unicode(false)]
     public string? ReasonForRejection { get; set; }
 
-    public void UpdateTotal() //unsure if this is the best place to put this but we'll try
-    {
-        Total = LineItems.Sum(li => li.Quantity * li.Product.Price);
-    }
-
     [JsonIgnore]
     [InverseProperty("Request")]
     public virtual ICollection<LineItem> LineItems { get; set; } = new List<LineItem>();
@@ -56,4 +51,9 @@ public partial class Request
     [ForeignKey("UserId")]
     [InverseProperty("Requests")]
     public virtual User? User { get; set; } = null!;
+
+    public void UpdateTotal() //unsure if this is the best place to put this but we'll try
+    {
+        Total = LineItems.Sum(li => li.Quantity * li.Product.Price);
+    }
 }

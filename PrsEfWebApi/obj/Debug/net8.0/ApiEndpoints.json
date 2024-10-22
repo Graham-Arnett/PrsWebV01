@@ -109,6 +109,32 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "PrsEfWebApi.Controllers.LineItemsController",
+    "Method": "GetLineItemsByRequestId",
+    "RelativePath": "api/LineItems/request/{requestid}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "requestid",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[PrsEfWebApi.Models.LineItem, PrsEfWebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
     "ContainingType": "PrsEfWebApi.Controllers.ProductsController",
     "Method": "GetProducts",
     "RelativePath": "api/Products",

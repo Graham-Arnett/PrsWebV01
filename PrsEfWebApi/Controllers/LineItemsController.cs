@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using Azure.Core;
 using Microsoft.AspNetCore.Http;
@@ -84,6 +85,20 @@ namespace PrsEfWebApi.Controllers
 
             return NoContent();
         }
+        [HttpGet("request/{requestid}")]
+        public async Task<ActionResult<IEnumerable<LineItem>>> GetLineItemsByRequestId(int requestid)
+        {
+            //we are trying to get all the lineitems for a particular request here
+            var lineItems = await _context.LineItems //I hope this works
+                .Where(li => li.RequestId == requestid)
+                .ToListAsync();
+            if (lineItems == null || !lineItems.Any())
+            {
+                return NotFound();
+            }
+            return Ok(lineItems);
+        }
+
 
         // POST: api/LineItems
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754

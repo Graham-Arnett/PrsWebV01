@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Query.Internal;
 using PrsEfWebApi.Models;
@@ -28,6 +29,27 @@ namespace PrsEfWebApi.Controllers
         public async Task<ActionResult<IEnumerable<Request>>> GetRequests()
         {
             return await _context.Requests.ToListAsync();
+        }
+
+        [HttpGet("list-review/{userid}")]
+        public async Task<IActionResult> ListReview(int userid)
+        {
+            //because this is a get command, we don't really edit the data here, we just search for it
+            //this is for reviewers to find requests ready to review
+            var reviewer = await _context.Users.FindAsync(userid);
+            if (reviewer == null || !reviewer.Reviewer) // this is meant to determind if the user even is a reviewer
+            {
+                return Forbid("You are not authorized."); //forbid as in forbidden, I assume because a normal user should not be allowed to see it
+            }
+            var requests = await _context.Requests
+                .Where(r => r.Status == "REVIEW" && r.UserId != userid) //this is meant to say the person logged in can't review their requests even if they're a reviewer
+                .ToListAsync(); //why is it spelled without an h?
+            if (requests == null || !requests.Any())
+            {
+                return NotFound("No requests found");
+            }
+
+            return Ok(requests);
         }
 
         // GET: api/Requests/5
@@ -78,27 +100,6 @@ namespace PrsEfWebApi.Controllers
             }
 
             return NoContent();
-        }
-
-        [HttpGet("list-review/{userid}")]
-        public async Task<IActionResult> ListReview(int userid)
-        {
-            //because this is a get command, we don't really edit the data here, we just search for it
-            //this is for reviewers to find requests ready to review
-            var reviewer = await _context.Users.FindAsync(userid);
-            if (reviewer == null || !reviewer.Reviewer) // this is meant to determind if the user even is a reviewer
-            {
-                return Forbid("You are not authorized."); //forbid as in forbidden, I assume because a normal user should not be allowed to see it
-            }
-            var requests = await _context.Requests
-                .Where(r => r.Status == "Review" && r.UserId != userid) //this is meant to say the person logged in can't review their requests even if they're a reviewer
-                .ToListAsync(); //why is it spelled without an h?
-            if (requests == null || !requests.Any())
-            {
-                return NotFound("No requests found");
-            }
-
-            return Ok(requests);
         }
 
         [HttpPut("submit-review/{id}")]
@@ -161,21 +162,15 @@ namespace PrsEfWebApi.Controllers
         }
 
         [HttpPut("reject/{id}")]//reject
-        public async Task<IActionResult> RejectRequest(int id, [FromBody] string? rejectionReason)
+        public async Task<IActionResult> RejectRequest(int id, RejectionReason rejectionReason)
         {
-            //this will be the put action for submitting a request for review this was the task before, but I'm testing something Task<ActionResult<IEnumerable<Request>>>
-            //ok, so this method just tells the program that a request is ready for review
-            //because of that, how can I define a default status value of review
-            //I spent a lot of time trying to fix it for the previous logic of only seeing it if you're a reviewer but I think I get it
-            //if only the reviewers can see the reviews page, and approve and accept are buttons, then that isn't needed
-            //the mapping in the document clued me into this
             var request = await _context.Requests.FindAsync(id);
             if (request == null)
             {
                 return NotFound();
             }
             request.Status = "REJECTED";
-            request.ReasonForRejection = rejectionReason; //the reason you reject, duh
+            request.ReasonForRejection = rejectionReason.ReasonForRejection; //the reason you reject, duh
             _context.Requests.Update(request);
             await _context.SaveChangesAsync();
             return NoContent();
@@ -184,8 +179,19 @@ namespace PrsEfWebApi.Controllers
         // POST: api/Requests
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Request>> PostRequest(Request request)
+        public async Task<ActionResult<Request>> PostRequest(RequestForm requestForm)
         {
+            Request request = new Request
+            {
+                UserId = requestForm.UserId,
+                Description = requestForm.Description,
+                Justification = requestForm.Justification,
+                DateNeeded = requestForm.DateNeeded,
+                DeliveryMode = requestForm.DeliveryMode,
+                SubmittedDate = DateTime.Now,
+                Status="NEW",
+                Total = 0.0m
+            };
             _context.Requests.Add(request);
             await _context.SaveChangesAsync();
 

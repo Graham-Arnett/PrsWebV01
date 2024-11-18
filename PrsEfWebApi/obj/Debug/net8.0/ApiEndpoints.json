@@ -272,8 +272,8 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "request",
-        "Type": "PrsEfWebApi.Models.Request",
+        "Name": "requestForm",
+        "Type": "PrsEfWebApi.Models.RequestForm",
         "IsRequired": true
       }
     ],
@@ -414,8 +414,8 @@
       },
       {
         "Name": "rejectionReason",
-        "Type": "System.String",
-        "IsRequired": false
+        "Type": "PrsEfWebApi.Models.RejectionReason",
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []

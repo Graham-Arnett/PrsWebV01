@@ -51,7 +51,6 @@ public partial class Request
     [ForeignKey("UserId")]
     [InverseProperty("Requests")]
     public virtual User? User { get; set; } = null!;
-
     public void UpdateTotal() //unsure if this is the best place to put this but we'll try
     {
         Total = LineItems.Sum(li => li.Quantity * li.Product.Price);

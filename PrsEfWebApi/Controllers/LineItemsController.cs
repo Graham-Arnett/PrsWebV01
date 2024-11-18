@@ -34,9 +34,10 @@ namespace PrsEfWebApi.Controllers
         public async Task<ActionResult<LineItem>> GetLineItem(int id) //I had thought adding lineitem here would help, it broke it
         {
             //var lineItem = await _context.LineItems.FindAsync(id);
-            var lineItem = await _context.LineItems.Include(r => r.Product)
-                .Include(r => r.Request)
-                .FirstOrDefaultAsync(r => r.Id == id);
+            var lineItem = await _context.LineItems.Include(li => li.Product)
+                .Include(li => li.Request)
+                .Include(li => li.Product.Vendor)
+                .FirstOrDefaultAsync(li => li.Id == id);
             if (lineItem == null)//how to fix the problem with product being null?
             {
                 return NotFound();
@@ -91,12 +92,29 @@ namespace PrsEfWebApi.Controllers
             //we are trying to get all the lineitems for a particular request here
             var lineItems = await _context.LineItems //I hope this works
                 .Where(li => li.RequestId == requestid)
+                .Include(li => li.Product)
+                .Include(li => li.Request)
+                .Include(li => li.Product.Vendor)
                 .ToListAsync();
-            if (lineItems == null || !lineItems.Any())
+           /* if (lineItems == null || !lineItems.Any())
             {
                 return NotFound();
-            }
+            }*/
             return Ok(lineItems);
+        }
+        private void nullifyAndSetId(LineItem lineItem) 
+        { 
+            Console.WriteLine("LI Nullify: LI: " + lineItem.ToString());
+
+            if (lineItem.Request != null) { if (lineItem.RequestId == 0) { lineItem.RequestId = lineItem.Request.Id; } 
+                lineItem.Request = null; } if (lineItem.Product != null)
+
+            { if (lineItem.ProductId == 0)
+
+                { lineItem.ProductId = lineItem.Product.Id; } 
+
+                lineItem.Product = null; }
+
         }
 
 
@@ -105,7 +123,7 @@ namespace PrsEfWebApi.Controllers
         [HttpPost]
         public async Task<ActionResult<LineItem>> PostLineItem(LineItem lineItem)
         {
-         
+            nullifyAndSetId (lineItem);
             if(lineItem == null)
             {
                 return BadRequest();
@@ -115,9 +133,16 @@ namespace PrsEfWebApi.Controllers
             
             //find the request(s)
             var request = await _context.Requests
-                .Include(r => r.LineItems)
-                .ThenInclude(li => li.Product)
-                .FirstOrDefaultAsync(r => r.Id == lineItem.RequestId);
+                  //.Include(li => li.Product)
+                //.Include(li => li.Request)
+                //.Include(li => li.Product.Vendor)
+                //.Include(li => li.Product)
+                //.Include(li => li.Request)//this and the line above are new from testing
+                .Include(li => li.LineItems)
+                //.Include(li => li.Id == lineItem.RequestId)
+                //.Include(li => li.Id == lineItem.ProductId)
+                .ThenInclude(li => li.Product) 
+                .FirstOrDefaultAsync(li => li.Id == lineItem.RequestId);
             if (request == null)
             {
                 return NotFound("The relevant request was not found");

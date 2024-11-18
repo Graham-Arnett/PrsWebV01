@@ -18,6 +18,9 @@ namespace PrsEfWebApi
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
+            app.UseCors(builder =>
+                builder.AllowAnyHeader().AllowAnyOrigin().AllowAnyMethod());
+
 
             app.UseAuthorization();
 

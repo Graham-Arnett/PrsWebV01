@@ -96,10 +96,6 @@ namespace PrsEfWebApi.Controllers
                 .Include(li => li.Request)
                 .Include(li => li.Product.Vendor)
                 .ToListAsync();
-           /* if (lineItems == null || !lineItems.Any())
-            {
-                return NotFound();
-            }*/
             return Ok(lineItems);
         }
         private void nullifyAndSetId(LineItem lineItem) 
@@ -133,14 +129,7 @@ namespace PrsEfWebApi.Controllers
             
             //find the request(s)
             var request = await _context.Requests
-                  //.Include(li => li.Product)
-                //.Include(li => li.Request)
-                //.Include(li => li.Product.Vendor)
-                //.Include(li => li.Product)
-                //.Include(li => li.Request)//this and the line above are new from testing
                 .Include(li => li.LineItems)
-                //.Include(li => li.Id == lineItem.RequestId)
-                //.Include(li => li.Id == lineItem.ProductId)
                 .ThenInclude(li => li.Product) 
                 .FirstOrDefaultAsync(li => li.Id == lineItem.RequestId);
             if (request == null)
@@ -157,16 +146,12 @@ namespace PrsEfWebApi.Controllers
 
 
             return CreatedAtAction("GetLineItem", new { id = lineItem.Id }, lineItem);
-            
-            ////return CreatedAtAction("GetLineItem", new { id = lineItem.Id }, lineItem);
-            //return CreatedAtAction(nameof(GetLineItem), new {id = lineItem.Id}, lineItem);
         }
 
         // DELETE: api/LineItems/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteLineItem(int id)
         {
-            //var lineItem = await _context.LineItems.FindAsync(id);
             var lineItem = await _context.LineItems //I am not sure this makes sense now that I "think" about it
                 .Include(li => li.Request) //but my intent is to find the lineitem and associated request
                 .FirstOrDefaultAsync(li => li.Id == id);

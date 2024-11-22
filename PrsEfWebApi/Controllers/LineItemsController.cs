@@ -159,14 +159,6 @@ namespace PrsEfWebApi.Controllers
             {
                 return NotFound();
             }
-            //ok so we have to find the request the lineitem is part of. Not sure how I forgot to do that
-
-            //var request = await _context.Requests all this commented out code is going to look unprofessional, but I need the reference
-            //    .Include(r => r.LineItems)
-            //    .FirstOrDefaultAsync(r => r.Id == lineItem.RequestId);
-            //_context.LineItems.Remove(lineItem);
-
-            //reference request
             var request = lineItem.Request;
 
             //maybe I could subtract lineitem total from the actual total?
@@ -187,7 +179,6 @@ namespace PrsEfWebApi.Controllers
 
             //update total
             await _context.SaveChangesAsync(); // we are getting closer
-            //request.UpdateTotal();//however, it now updates to zero, but thats still closer than not updating
 
             //save
              await _context.SaveChangesAsync();          
